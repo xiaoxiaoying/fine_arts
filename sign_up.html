@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>
+
+    <script type="text/javascript" src="js/cache.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+    <script type="text/javascript" src="http://admin.yiyouapp.com/activity/js/freejquery.min.js"></script>
+    <script type="text/javascript" src="http://admin.yiyouapp.com/activity/js/freeheight2.js"></script>
+
+    <link href="http://admin.yiyouapp.com/activity/css/free.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+<div id="main" style="position: absolute;">
+    <div style="padding-left: 10px;padding-top: 20px;padding-bottom: 20px;">
+        <div>
+            <h3 id="head" style="color: #dc1b01;float: left;">温馨提示：</h3>
+
+            <h3 id="head1" style="float: left">请填写真实信息，方便我们跟您联系</h3>
+        </div>
+        <div style="padding-top: 5px">
+            <h3 style="color: #dc1b01">咨询电话：</h3>
+
+            <h3>400-6638-770</h3>
+        </div>
+    </div>
+    <hr/>
+    <div style="padding: 20px">
+        <div>
+            <div style="float: left;width: 80px;padding-top: 3px;">
+                <h3 style="color: #dc1b01">&nbsp;&nbsp;&nbsp;*</h3>
+
+                <h3>&nbsp;姓名：</h3>
+            </div>
+            <input id="name" type="text" placeholder="输入真实姓名">
+        </div>
+        <div style="padding-top: 10px">
+            <div style="float: left;width: 80px;padding-top: 3px;">
+                <h3 style="color: #dc1b01">&nbsp;*</h3>
+
+                <h3>手机号：</h3>
+            </div>
+            <input id="phone" type="number" placeholder="填写真实手机号">
+        </div>
+        <div style="padding-top: 10px; height: auto;">
+            <div style="float: left;width: 80px;padding-top: 3px;">
+                <h3 style="width: 80px">预约画室：</h3>
+            </div>
+            <textarea id="extra1" name="textarea" style="height: auto;width: 234px;" placeholder="预约看哪家画室"></textarea>
+        </div>
+
+    </div>
+    <hr/>
+    <div id="btn" align="center">
+        提交
+    </div>
+</div>
+
+<div id="pop" style="background-color: rgba(0,0,0,0.75);position:absolute;width: auto;height: auto;" align="center">
+    <div id="back">
+        <h3 id="txt" align="center" style="margin-top: 20px;background-color: white;font-size: 14px;">信息提交失败</h3>
+        <hr id="dv" style="margin-top: 20px;"/>
+        <h3 id="sure" style="color: #1d9eee;margin-bottom: 20px;background-color: white;font-size: 16px;">确定</h3>
+    </div>
+</div>
+
+</body>
+<script>
+    $(
+            function () {
+
+                var count = TempCache.getItem("count");
+                console.log("16 == " + document.referrer + "  count = " + count + " == " + TempCache.getItem("0"));
+                var hh = TempCache.getItem("0");
+
+
+                switch (count) {
+
+                    case "1":
+                        hh = TempCache.getItem("0");
+                        hh.replace(' ', '');
+                        $("#extra1").val(hh);
+                        break;
+                    case "2":
+                        hh = TempCache.getItem("0") + TempCache.getItem("1");
+                        hh.replace(' ', '');
+
+                        $("#extra1").val(hh);
+                        break;
+                    case "3":
+                        hh = TempCache.getItem("0") + TempCache.getItem("1") + TempCache.getItem("2");
+//                            hh = "杭州六法画室\n杭州求是画室\n杭州羽翼画室";
+                        hh.replace(' ', '');
+                        $("#extra1").val(hh);
+                        console.log("====================" + hh);
+                        break;
+                    default :
+                        $("#extra1").val("");
+                        break;
+                }
+                function adjustObjHeight(obj, defaultHeight) {
+                    if(obj.scrollHeight > defaultHeight) {
+                        obj.style.height = obj.scrollHeight + 'px';
+                    } else {
+                        obj.style.height = defaultHeight + 'px';
+                    }
+                }
+                window.onload = function() {
+                    var obj = document.getElementsByTagName('textarea');
+                    var len = obj.length;
+                    for(var i = 0; i<len; i++)
+                        adjustObjHeight(obj[i], 50);
+                }
+                $("#extra1").click(function () {
+                    window.location.href = "select_studio.html";
+                });
+            }
+    )
+
+
+</script>
+
+</html>
